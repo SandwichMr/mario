@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/teto_red</item>
+        <item name="colorPrimaryContainer">@color/teto_blush</item>
+        <item name="colorSecondary">@color/teto_hot_pink</item>
+        <item name="colorSecondaryContainer">@color/teto_mint</item>
+        <item name="colorSurface">@color/teto_cream</item>
+        <item name="colorOnSurface">@color/teto_charcoal</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/teto_deep_red</item>
+        <item name="android:navigationBarColor">@color/teto_charcoal</item>
+    </style>
+
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+</resources>

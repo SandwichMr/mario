@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teto_cream"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgTetoLogo"
+        android:layout_width="124dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/teto_blush"
+        android:contentDescription="Logo Kasane Teto"
+        android:padding="6dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/kasane_teto_logo"
+        app:layout_constraintBottom_toTopOf="@+id/txttitulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txttitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="54dp"
+        android:text="CALCULAR EDAD"
+        android:textAlignment="center"
+        android:textColor="@color/teto_red"
+        android:textSize="12pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/edtxtanionac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgTetoLogo" />
+
+    <EditText
+        android:id="@+id/edtxtanionac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="65dp"
+        android:ems="10"
+        android:hint="Año de nacimiento"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@color/teto_charcoal"
+        android:textColorHint="@color/teto_deep_red"
+        android:textSize="10pt"
+        app:layout_constraintBottom_toTopOf="@+id/txtedad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txttitulo" />
+
+    <TextView
+        android:id="@+id/txtedad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="51dp"
+        android:text="La edad es: "
+        android:textAlignment="center"
+        android:textColor="@color/teto_graphite"
+        android:textSize="12pt"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/btncalcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtanionac" />
+    <Button
+        android:id="@+id/btncalcular"
+        android:layout_width="157dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="43dp"
+        android:backgroundTint="@color/teto_red"
+        android:text="CALCULAR"
+        android:textColor="@color/teto_cream"
+        android:textSize="8pt"
+        app:layout_constraintBottom_toTopOf="@+id/btnsiguiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtedad" />
+    <Button
+        android:id="@+id/btnsiguiente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="135dp"
+        android:backgroundTint="@color/teto_deep_red"
+        android:text="SIGUIENTE"
+        android:textColor="@color/teto_cream"
+        android:textSize="8pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btncalcular" />
+</androidx.constraintlayout.widget.ConstraintLayout>
