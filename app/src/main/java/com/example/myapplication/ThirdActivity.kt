@@ -7,14 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import com.example.myapplication.databinding.ActivityThirdBinding
 class ThirdActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityThirdBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_third)
-        val binding = ActivityThirdBinding.inflate(layoutInflater)
+        binding = ActivityThirdBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.title = "Atrás"
@@ -22,42 +23,48 @@ class ThirdActivity : AppCompatActivity() {
 
         // Código del botón de llamada, toma el numero telefónico y hace
 
-        binding.imageButtonPhone.setOnClickListener(object :
-            View.OnClickListener {
-            override fun onClick(v: View?) {
-                // Instrucción para asignar el número telefonico escrito
+        binding.imageButtonPhone.setOnClickListener {
+            // Instrucción para asignar el número telefonico escrito
 
-                val phoneNumber = binding.editTextPhone.text.toString()
-                // Código para preguntar si el cuadro de diálogo no está
+            val phoneNumber = binding.editTextPhone.text.toString().trim()
+            // Código para preguntar si el cuadro de diálogo no está
 
-                if (phoneNumber.isNotEmpty()) {
-                    val intentCall = Intent(
-                        Intent.ACTION_DIAL,
-                        Uri.parse("tel:$phoneNumber")
-                    )
-                    startActivity(intentCall)
-                } else
-                    Toast.makeText(
-                        this@ThirdActivity,
-                        "Debes marcar un número, intenta nuevamente",
-                        Toast.LENGTH_LONG
-                    ).show()
+            if (phoneNumber.isNotEmpty()) {
+                val intentCall = Intent(
+                    Intent.ACTION_DIAL,
+                    Uri.parse("tel:$phoneNumber")
+                )
+                startActivity(intentCall)
+            } else {
+                Toast.makeText(
+                    this,
+                    "Debes marcar un número, intenta nuevamente",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-        })
+        }
         //Código botón busqueda de página Web
         binding.imageButtonWeb.setOnClickListener {
-            val url = binding.editTextWeb.text.toString()
-            val intentWeb = Intent()
-            intentWeb.action = Intent.ACTION_VIEW
-            intentWeb.data = Uri.parse("https://$url")
-            startActivity(intentWeb)
+            val rawUrl = binding.editTextWeb.text.toString().trim()
+
+            if (rawUrl.isNotEmpty()) {
+                val url = if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://")) {
+                    rawUrl
+                } else {
+                    "https://$rawUrl"
+                }
+                val intentWeb = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(intentWeb)
+            } else {
+                Toast.makeText(this, "Escribe una página web", Toast.LENGTH_LONG).show()
+            }
         }
         //Código botón Escribeme un correo
         binding.buttonEmailMe.setOnClickListener {
-            val mailto = "mailto:correoprueba_1@hotmail.com" + "?cc=" +
-                    "correoprueba_2@gmail.com" + "&subject=" + Uri.encode("Asunto del correo") + "&body=" + Uri.encode(
-                "Esta es una prueba..."
-            )
+            val mailto = "mailto:${getString(R.string.email_to)}" +
+                    "?cc=${getString(R.string.email_cc)}" +
+                    "&subject=${Uri.encode("Asunto del correo")}" +
+                    "&body=${Uri.encode(getString(R.string.default_message))}"
             val emailIntent = Intent(
                 Intent.ACTION_SENDTO,
                 Uri.parse(mailto)
@@ -73,10 +80,10 @@ class ThirdActivity : AppCompatActivity() {
             }
         }
         //Código botón Contáctame
-        binding.buttonContacPhone.setOnClickListener {
+        binding.buttonContactPhone.setOnClickListener {
             val intentCall = Intent(
                 Intent.ACTION_DIAL, Uri.parse(
-                    "tel:2288302966"
+                    "tel:${getString(R.string.contact_phone)}"
                 )
             )
             startActivity(intentCall)
@@ -116,8 +123,8 @@ class ThirdActivity : AppCompatActivity() {
                 val intentSMS = Intent().apply {
                     action = Intent.ACTION_SENDTO
                     data = Uri.parse("smsto:")
-                    putExtra("address", "2288302966")
-                    putExtra("sms_body", "Cuerpo del SMS desde un menú")
+                    putExtra("address", getString(R.string.contact_phone))
+                    putExtra("sms_body", getString(R.string.default_message))
                 }
                 startActivity(intentSMS)
                 return true

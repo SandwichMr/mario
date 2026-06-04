@@ -25,15 +25,12 @@
 
         <activity
             android:name=".SecondActivity"
-            android:exported="true"/>
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ThirdActivity"
             android:exported="false"
-            android:parentActivityName=".SecondActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SecondActivity" />
-        </activity>
+            android:parentActivityName=".SecondActivity" />
     </application>
 
 </manifest>

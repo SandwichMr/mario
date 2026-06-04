@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         // Icono en barra superior
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setIcon(R.mipmap.ic_launcher)
+        supportActionBar?.setIcon(R.drawable.kasane_teto_logo)
 
         // ViewBinding
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,22 +30,30 @@ class MainActivity : AppCompatActivity() {
         // Botón calcular edad
         binding.btncalcular.setOnClickListener {
 
-            val texto = binding.edtxtanionac.text.toString()
+            val anioNac = binding.edtxtanionac.text.toString().toIntOrNull()
+            val anioActual = Calendar.getInstance().get(Calendar.YEAR)
 
-            if (texto.isNotEmpty()) {
+            when {
+                anioNac == null -> {
+                    Toast.makeText(
+                        this,
+                        "Escribe tu año de nacimiento",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
-                val anioNac = texto.toInt()
-                val anioActual = Calendar.getInstance().get(Calendar.YEAR)
-                val miEdad = anioActual - anioNac
+                anioNac !in 1900..anioActual -> {
+                    Toast.makeText(
+                        this,
+                        "Escribe un año válido",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
-                binding.txtedad.text = "Tu edad es $miEdad años"
-
-            } else {
-                Toast.makeText(
-                    this,
-                    "Escribe tu año de nacimiento",
-                    Toast.LENGTH_SHORT
-                ).show()
+                else -> {
+                    val miEdad = anioActual - anioNac
+                    binding.txtedad.text = "Tu edad es $miEdad años"
+                }
             }
         }
 

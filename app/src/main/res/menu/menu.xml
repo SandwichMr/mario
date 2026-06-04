@@ -12,19 +12,19 @@
                 android:id="@+id/menuContactos"
                 android:icon="@android:drawable/ic_menu_myplaces"
                 android:title="@string/contactos"
-                app:showAsAction="never" />
+                app:showAsAction="ifRoom" />
 
             <item
                 android:id="@+id/menuSMS"
                 android:icon="@android:drawable/ic_dialog_email"
                 android:title="@string/enviar_sms"
-                app:showAsAction="never" />
+                app:showAsAction="ifRoom" />
 
             <item
                 android:id="@+id/menuVideo"
-                android:icon="@android:drawable/ic_menu_camera"
+                android:icon="@android:drawable/presence_video_online"
                 android:title="@string/video"
-                app:showAsAction="never" />
+                app:showAsAction="ifRoom" />
         </menu>
     </item>
 </menu>

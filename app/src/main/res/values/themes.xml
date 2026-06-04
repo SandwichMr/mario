@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/teto_red</item>
+        <item name="colorPrimaryDark">@color/teto_deep_red</item>
         <item name="colorPrimaryContainer">@color/teto_blush</item>
         <item name="colorSecondary">@color/teto_hot_pink</item>
         <item name="colorSecondaryContainer">@color/teto_mint</item>
@@ -10,7 +10,17 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:statusBarColor">@color/teto_deep_red</item>
         <item name="android:navigationBarColor">@color/teto_charcoal</item>
+        <item name="actionBarStyle">@style/Widget.MyApplication.ActionBar</item>
     </style>
 
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+
+    <style name="Widget.MyApplication.ActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="background">@color/teto_deep_red</item>
+        <item name="titleTextStyle">@style/Text.MyApplication.ActionBarTitle</item>
+    </style>
+
+    <style name="Text.MyApplication.ActionBarTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/teto_cream</item>
+    </style>
 </resources>
